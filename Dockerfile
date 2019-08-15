@@ -9,8 +9,10 @@ WORKDIR /app
 RUN pip install -i https://pypi.douban.com/simple/ \
                 -r /app/requirements.pip &&\
     chmod +x /app/main.py /app/sshop/models.py &&\
-    python sshop/models.py
+    python sshop/models.py &&\
+    mv /app/start.sh / &&\
+    chmod +x /start.sh
 
 EXPOSE 6732
 
-ENTRYPOINT ["python","main.py"]   
+ENTRYPOINT ["/start.sh"]   
